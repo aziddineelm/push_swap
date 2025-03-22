@@ -13,13 +13,18 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include <stdlib.h>
+#include <stdio.h>
+
 typedef struct s_sdata
 {
 	char	*stack_a;
 	char	*stack_b;
 }			t_data;
 
-int	ft_atoi(const char *str);
-
+char	**ft_split(char const *s, char c);
+char	*ft_strdup(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_strlen(const char *s);
 
 #endif

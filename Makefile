@@ -1,9 +1,9 @@
 CC		= cc
 CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -lmlx -lXext -lX11
-SRCS =
+SRCS = push_swap.c utils.c split.c
 OBJS = $(SRCS:.c=.o)
-NAME = 
+NAME = push_swap
 RM = rm -f
 
 all: $(NAME)

@@ -12,29 +12,59 @@
 
 #include "push_swap.h"
 
-
-
-int	ft_atoi(const char *str)
+int	ft_strlen(const char *s)
 {
-	int			i;
-	int			sign;
-	long long	result;
+	int	i;
 
 	i = 0;
-	sign = 1;
-	result = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+	while (s[i])
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	return (i);
+}
+
+char	*ft_strdup(const char *s)
+{
+	size_t	i;
+	size_t	len;
+	char	*str_dup;
+
+	len = 0;
+	while (s[len])
+		len++;
+	str_dup = (char *)malloc(len + 1);
+	if (!str_dup)
+		return (NULL);
+	i = 0;
+	while (s[i])
 	{
-		if (str[i] == '-')
-			sign *= -1;
+		str_dup[i] = s[i];
 		i++;
 	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	str_dup[i] = '\0';
+	return (str_dup);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	int		size;
+	char	*str;
+
+	i = 0;
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	size = ft_strlen(s1) + ft_strlen(s2);
+	str = malloc(sizeof(char) * size + 2);
+	if (!str)
+		return (NULL);
+	while (s1[j])
+		str[i++] = s1[j++];
+	j = 0;
+	str[i++] = ' ';
+	while (s2[j])
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
 }
