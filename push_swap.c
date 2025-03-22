@@ -6,12 +6,22 @@
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:58:55 by ael-mans          #+#    #+#             */
-/*   Updated: 2025/03/21 17:27:54 by ael-mans         ###   ########.fr       */
+/*   Updated: 2025/03/22 13:23:39 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+#include <stdlib.h>
+
+t_data	*init_stack(void)
+{
+	t_data	*stack;
+
+	stack = malloc(sizeof(t_data));
+	if (!stack)
+		return (NULL);
+	stack->stack_a = 
+}
 
 char	**filter_args(char **av)
 {
@@ -44,7 +54,8 @@ int	main(int ac, char **av)
 		return 0;
 	data.stack_a = NULL;
 	args = filter_args(av);
-	for (int i = 0; args[i]; i++)
-		printf("%s\n", args[i]);
+
+	/*for (int i = 0; args[i]; i++)*/
+	/*	printf("%s\n", args[i]);*/
 	return (0);
 }
