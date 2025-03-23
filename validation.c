@@ -91,6 +91,9 @@ int	validate_input(t_data *data, char **args)
 	if (has_duplicates(data) || has_integer_overflow(args))
 		return (0);
 	if (is_sorted(data->stack))
-		return (0);
+	{
+		clean_exit(data, NULL, args);
+		exit(0);
+	}
 	return (1);
 }

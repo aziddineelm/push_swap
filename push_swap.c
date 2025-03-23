@@ -22,7 +22,7 @@ int	count_args(char **args)
 	return (i);
 }
 
-int	parse_args_to_stack(char **args, int arg_count, t_data **data)
+int	parse_args_to_stack(char **args, t_data **data)
 {
 	t_stack	*current;
 	int		i;
@@ -69,7 +69,7 @@ char	**parse_input_args(char **argv)
 		tmp = ft_strjoin(str, argv[i]);
 		free(str);
 		if (!tmp || !argv[i][0])
-			return (NULL);
+			return (free(tmp), NULL);
 		str = tmp;
 		i++;
 	}
@@ -86,20 +86,24 @@ int	main(int argc, char **argv)
 
 	if (argc < 3)
 		return (0);
-	a = init_stack_data();
-	b = init_stack_data();
-	if (!a || !b)
+	if (!(a = init_stack_data()))
 		return (0);
 	args = parse_input_args(argv + 1);
 	if (args == NULL)
+	{
+		write(2, "Error\n", 6);
+		clean_exit(a, NULL, NULL);
 		return (1);
-	parse_args_to_stack(args, argc - 1, &a);
+	}
+	parse_args_to_stack(args,  &a);
 	if (!validate_input(a, args) || !is_valid_integer(args))
 	{
 		write(2, "Error\n", 6);
-		clean_exit(a, b, args);
+		clean_exit(a, NULL, args);
 		exit(1);
 	}
+	if (!(b = init_stack_data()))
+		return (0);
 	sort_stack(a, b);
 	clean_exit(a, b, args);
 	return (0);

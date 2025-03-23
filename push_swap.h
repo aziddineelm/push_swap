@@ -73,7 +73,7 @@ void		sort_four_elements(t_stack **a, t_stack **b, t_data *data);
 void		sort_five_elements(t_stack **a, t_stack **b, t_data *data);
 void		sort_large_stack(t_stack **a, t_stack **b, t_data *data);
 void		push_max_to_a(t_stack **a, t_stack **b);
-int			determine_chunk_size(t_stack *stack, t_data *data);
+int			determine_chunk_size(t_data *data);
 int			free_args(char **args);
 void		clean_exit(t_data *a, t_data *b, char **args);
 

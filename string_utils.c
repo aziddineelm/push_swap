@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	result;
-	size_t	sign;
+	int	i;
+	int	result;
+	int	sign;
 	char	*s;
 
 	s = (char *)str;
@@ -33,11 +33,11 @@ int	ft_atoi(const char *str)
 	}
 	while (s[i] >= '0' && s[i] <= '9')
 	{
-		result *= 10;
-		result += (s[i] - '0');
-		i++;
+	if (result > INT_MAX || result < INT_MIN)
+			return (1);
+		result = result * 10 + (s[i++] - '0');
 	}
-	return ((int)(result * sign));
+	return (result * sign);
 }
 
 char	*ft_strdup(const char *s)

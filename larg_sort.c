@@ -28,9 +28,9 @@ void	push_max_to_a(t_stack **a, t_stack **b)
 	pa(a, b);
 }
 
-int	determine_chunk_size(t_stack *stack, t_data *data)
+int determine_chunk_size(t_data *data)
 {
-	int	chunk_size;
+	int chunk_size;
 
 	if (data->size <= 16)
 		chunk_size = 5;
@@ -43,7 +43,7 @@ int	determine_chunk_size(t_stack *stack, t_data *data)
 
 void	sort_large_stack(t_stack **a, t_stack **b, t_data *data)
 {
-	data->chunk_size = determine_chunk_size(*a, data);
+	data->chunk_size = determine_chunk_size(data);
 	data->size = ft_lstsize(*a);
 	while (*a)
 	{
