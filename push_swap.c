@@ -56,12 +56,9 @@ char	**parse_input_args(char **argv)
 	char	*str;
 	char	**args;
 
-	if (!argv[0] || !argv[0][0])
-	{
-		write(2, "Error\n", 7);
-		return (NULL);
-	}
 	i = 0;
+	if (!argv[i] || !argv[i][0])
+		return (NULL);
 	str = ft_strdup(argv[i]);
 	i++;
 	while (argv[i])
@@ -91,13 +88,15 @@ int	main(int argc, char **argv)
 	args = parse_input_args(argv + 1);
 	if (args == NULL)
 	{
+		write(2, "1\n", 1);
 		write(2, "Error\n", 6);
 		clean_exit(a, NULL, NULL);
 		return (1);
 	}
-	parse_args_to_stack(args,  &a);
+	parse_args_to_stack(args, &a);
 	if (!validate_input(a, args) || !is_valid_integer(args))
 	{
+		write(2, "1\n", 1);
 		write(2, "Error\n", 6);
 		clean_exit(a, NULL, args);
 		exit(1);

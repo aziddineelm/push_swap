@@ -28,18 +28,34 @@ int	is_sorted(t_stack *stack)
 
 int	has_integer_overflow(char **args)
 {
-	int	i;
+	int		i;
+	long	value;
+	int		j;
+	int		sign;
 
 	i = 0;
 	while (args[i])
 	{
-		if (ft_atoi(args[i]) > INT_MAX || ft_atoi(args[i]) < INT_MIN)
-			return (1);
+		j = 0;
+		sign = 1;
+		value = 0;
+		if (args[i][j] == '-' || args[i][j] == '+')
+		{
+			if (args[i][j] == '-')
+				sign = -1;
+			j++;
+		}
+		while (args[i][j] >= '0' && args[i][j] <= '9')
+		{
+			value = value * 10 + (args[i][j++] - '0');
+			if ((sign == 1 && value > INT_MAX) || (sign == -1 &&
+					-value < INT_MIN))
+				return (1);
+		}
 		i++;
 	}
 	return (0);
 }
-
 int	is_valid_integer(char **args)
 {
 	int	i;
@@ -88,7 +104,9 @@ int	has_duplicates(t_data *data)
 
 int	validate_input(t_data *data, char **args)
 {
-	if (has_duplicates(data) || has_integer_overflow(args))
+	if (has_integer_overflow(args))
+		return (0);
+	if (has_duplicates(data))
 		return (0);
 	if (is_sorted(data->stack))
 	{
