@@ -1,16 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 17:18:37 by ael-mans          #+#    #+#             */
-/*   Updated: 2025/03/21 17:23:39 by ael-mans         ###   ########.fr       */
+/*   Updated: 2025/03/23 11:20:12 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_atoi(const char *str)
+{
+	size_t	i;
+	size_t	result;
+	size_t	sign;
+	char	*s;
+
+	s = (char *)str;
+	i = 0;
+	result = 0;
+	sign = 1;
+	while (s[i] == ' ' || (s[i] >= 8 && s[i] <= 13))
+		i++;
+	if (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		result *= 10;
+		result += (s[i] - '0');
+		i++;
+	}
+	return ((int)(result * sign));
+}
+
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	while (s[i])
+		i++;
+	str = (char *)malloc((sizeof(char) * i) + 1);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
 
 int	ft_strlen(const char *s)
 {
@@ -20,28 +69,6 @@ int	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	i;
-	size_t	len;
-	char	*str_dup;
-
-	len = 0;
-	while (s[len])
-		len++;
-	str_dup = (char *)malloc(len + 1);
-	if (!str_dup)
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		str_dup[i] = s[i];
-		i++;
-	}
-	str_dup[i] = '\0';
-	return (str_dup);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)

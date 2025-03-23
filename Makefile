@@ -1,25 +1,26 @@
 CC		= cc
-CFLAGS = -Wall -Wextra -Werror
-MLX_FLAGS = -lmlx -lXext -lX11
-SRCS = push_swap.c utils.c split.c
-OBJS = $(SRCS:.c=.o)
-NAME = push_swap
-RM = rm -f
+
+CFLAGS	= -Wall -Wextra -Werror
+
+SRC		= array_utils.c larg_sort.c list_utils.c memory.c \
+		  operations_a.c operations_b.c push_swap.c ft_split.c \
+		  sorting.c stack_utils.c string_utils.c validation.c
+OBJ		= $(SRC:.c=.o)
+
+NAME	= push_swap
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME) $(BONUS)
 
 re: fclean all
-
-.PHONY: clean
