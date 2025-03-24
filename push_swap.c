@@ -52,10 +52,7 @@ int	parse_args_to_stack(char **args, t_data **data)
 	{
 		current->next = malloc(sizeof(t_stack));
 		if (!current->next)
-		{
-			free_partial_stack((*data)->stack);
-			return (0);
-		}
+			return (free_partial_stack((*data)->stack), 0);
 		current = current->next;
 		current->value = ft_atoi(args[i]);
 		current->next = NULL;
@@ -110,15 +107,13 @@ int	main(int argc, char **argv)
 	if (args == NULL)
 	{
 		write(2, "Error\n", 6);
-		clean_exit(a, b, NULL);
-		return (1);
+		return (clean_exit(a, b, NULL), 1);
 	}
 	parse_args_to_stack(args, &a);
 	if (!validate_input(a, args) || !is_valid_integer(args))
 	{
 		write(2, "Error\n", 6);
-		clean_exit(a, NULL, args);
-		exit(1);
+		return (clean_exit(a, b, NULL), 1);
 	}
 	sort_stack(a, b);
 	clean_exit(a, b, args);

@@ -28,32 +28,13 @@ int	is_sorted(t_stack *stack)
 
 int	has_integer_overflow(char **args)
 {
-	int		i;
-	long	value;
-	int		j;
-	int		sign;
+	int	i;
 
 	i = 0;
 	while (args[i])
 	{
-		j = 0;
-		sign = 1;
-		value = 0;
-		if (args[i][j] == '-' || args[i][j] == '+')
-		{
-			if (args[i][j] == '-')
-				sign = -1;
-			j++;
-		}
-		while (args[i][j] >= '0' && args[i][j] <= '9')
-		{
-			value = value * 10 + (args[i][j++] - '0');
-			if ((sign == 1 && value > INT_MAX) || (sign == -1 &&
-					-value < INT_MIN))
-			{
-				return (1);
-			}
-		}
+		if (ft_atoi(args[i]) > 2147483647 || ft_atoi(args[i]) < -2147483648)
+			return (1);
 		i++;
 	}
 	return (0);
