@@ -52,7 +52,7 @@ int			has_duplicates(t_data *data);
 int			validate_input(t_data *data, char **args);
 char		*ft_strdup(const char *s);
 int			ft_strlen(const char *s);
-char		**ft_split(const char *s, int c);
+char		**ft_split(char const *s, char c);
 char		*ft_strjoin(char const *s1, char const *s2);
 int			ft_atoi(const char *str);
 t_data		*init_stack_data(void);

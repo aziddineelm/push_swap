@@ -83,12 +83,13 @@ int	main(int argc, char **argv)
 
 	if (argc < 3)
 		return (0);
-	if (!(a = init_stack_data()))
+	a = init_stack_data();
+	b = init_stack_data();
+	if (!a || !b)
 		return (0);
 	args = parse_input_args(argv + 1);
 	if (args == NULL)
 	{
-		write(2, "1\n", 1);
 		write(2, "Error\n", 6);
 		clean_exit(a, NULL, NULL);
 		return (1);
@@ -96,13 +97,10 @@ int	main(int argc, char **argv)
 	parse_args_to_stack(args, &a);
 	if (!validate_input(a, args) || !is_valid_integer(args))
 	{
-		write(2, "1\n", 1);
 		write(2, "Error\n", 6);
 		clean_exit(a, NULL, args);
 		exit(1);
 	}
-	if (!(b = init_stack_data()))
-		return (0);
 	sort_stack(a, b);
 	clean_exit(a, b, args);
 	return (0);

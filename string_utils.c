@@ -14,33 +14,29 @@
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	long	result;
-	int		sign;
-	char	*s;
+	int			i;
+	int			sign;
+	long long	result;
 
-	s = (char *)str;
 	i = 0;
-	result = 0;
 	sign = 1;
-	while (s[i] == ' ' || (s[i] >= 8 && s[i] <= 13))
+	result = 0;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if (s[i] == '-' || s[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (s[i] == '-')
+		if (str[i] == '-')
 			sign *= -1;
 		i++;
 	}
-	while (s[i] >= '0' && s[i] <= '9')
+	while (str[i] && str[i] >= '0' & str[i] <= '9')
 	{
-		result = result * 10 + (s[i++] - '0');
-		if ((sign == 1 && result > INT_MAX) || (sign == -1 &&
-				-result < INT_MIN))
-			return (sign == 1 ? INT_MAX + 1 : INT_MIN - 1);
-				// Return out of bounds value
+		result = result * 10 + (str[i] - '0');
+		i++;
 	}
-	return ((int)(result * sign));
+	return (result * sign);
 }
+
 char	*ft_strdup(const char *s)
 {
 	int		i;

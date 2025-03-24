@@ -30,7 +30,10 @@ int	free_args(char **args)
 
 void	clean_exit(t_data *a, t_data *b, char **args)
 {
-	free_args(args);
-	free_stack_data(a);
-	free_stack_data(b);
+	if (args)
+		free_args(args);
+	if (a)
+		free_stack_data(a);
+	if (b)
+		free_stack_data(b);
 }
