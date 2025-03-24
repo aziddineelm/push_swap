@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+void	free_partial_stack(t_stack *stack)
+{
+	t_stack	*current;
+	t_stack	*next;
+
+	current = stack;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+}
+
 int	count_args(char **args)
 {
 	int	i;
@@ -38,7 +52,10 @@ int	parse_args_to_stack(char **args, t_data **data)
 	{
 		current->next = malloc(sizeof(t_stack));
 		if (!current->next)
+		{
+			free_partial_stack((*data)->stack);
 			return (0);
+		}
 		current = current->next;
 		current->value = ft_atoi(args[i]);
 		current->next = NULL;
@@ -60,6 +77,8 @@ char	**parse_input_args(char **argv)
 	if (!argv[i] || !argv[i][0])
 		return (NULL);
 	str = ft_strdup(argv[i]);
+	if (!str)
+		return (NULL);
 	i++;
 	while (argv[i])
 	{
@@ -81,7 +100,7 @@ int	main(int argc, char **argv)
 	t_data	*b;
 	char	**args;
 
-	if (argc < 3)
+	if (argc < 2)
 		return (0);
 	a = init_stack_data();
 	b = init_stack_data();
@@ -91,7 +110,7 @@ int	main(int argc, char **argv)
 	if (args == NULL)
 	{
 		write(2, "Error\n", 6);
-		clean_exit(a, NULL, NULL);
+		clean_exit(a, b, NULL);
 		return (1);
 	}
 	parse_args_to_stack(args, &a);

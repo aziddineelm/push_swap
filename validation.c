@@ -50,12 +50,15 @@ int	has_integer_overflow(char **args)
 			value = value * 10 + (args[i][j++] - '0');
 			if ((sign == 1 && value > INT_MAX) || (sign == -1 &&
 					-value < INT_MIN))
+			{
 				return (1);
+			}
 		}
 		i++;
 	}
 	return (0);
 }
+
 int	is_valid_integer(char **args)
 {
 	int	i;
