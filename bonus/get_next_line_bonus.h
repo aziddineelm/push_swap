@@ -25,5 +25,8 @@
 
 char	*get_next_line(int fd);
 int		ft_contain(char *str, int c);
+int		ft_strlen(const char *s);
+char		*ft_strdup(const char *s);
+char		*ft_strjoin(char const *s1, char const *s2);
 
 #endif

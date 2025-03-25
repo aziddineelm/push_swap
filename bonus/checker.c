@@ -53,7 +53,10 @@ int	cmp(char *line, t_data *a, t_data *b, char **args)
 	else if (!ft_strncmp("rrr", line, 3) && (line[3] == '\n'))
 		rrr(&a->stack, &b->stack);
 	else
-		return (perror("error"), free(get_next_line(0)), -1);
+	{
+		perror("error");
+		return (-1);
+	}
 	return (0);
 }
 

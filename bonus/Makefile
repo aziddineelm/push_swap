@@ -8,7 +8,7 @@ SRC		= array_utils_bonus.c larg_sort_bonus.c list_utils_bonus.c memory_bonus.c \
 		  checker.c get_next_line_bonus.c get_next_line_utils_bonus.c operations_bonus.c
 OBJ		= $(SRC:.c=.o)
 
-NAME	= push_swap
+NAME	= checker
 
 all: $(NAME)
 
