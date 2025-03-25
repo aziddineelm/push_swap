@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 15:44:19 by ael-mans          #+#    #+#             */
-/*   Updated: 2025/03/25 15:48:35 by ael-mans         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:15:28 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
 char	*ft_read(char *buffer, int fd)
 {

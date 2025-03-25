@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:40:39 by ael-mans          #+#    #+#             */
-/*   Updated: 2025/03/25 15:54:57 by ael-mans         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:18:21 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 #include "get_next_line.h"
 
 static int	ft_strncmp(const char *s1, const char *s2, size_t n)
