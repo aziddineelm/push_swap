@@ -60,8 +60,6 @@ void		ft_lstadd_front(t_stack **lst, t_stack *newer);
 void		ft_lstadd_back(t_stack **lst, t_stack *newer);
 t_stack		*ft_lstlast(t_stack *lst);
 int			ft_lstsize(t_stack *lst);
-int			parse_args_to_stack(char **args, t_data **data);
-char		**parse_input_args(char **argv);
 int			get_value_index(t_stack *stack, int value);
 t_stack		*get_stack_last(t_stack *stack);
 void		create_sorted_array(t_stack *stack, t_data **data);
