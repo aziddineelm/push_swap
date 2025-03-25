@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+#include "push_swap_bonus.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2
