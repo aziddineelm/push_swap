@@ -33,6 +33,8 @@ int	ft_atoi(const char *str)
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;
+		if (result * sign > INT_MAX || result * sign < INT_MIN)
+			return (0);
 	}
 	return (result * sign);
 }
