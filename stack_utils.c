@@ -24,6 +24,7 @@ t_data	*init_stack_data(void)
 	data->array = 0;
 	data->min_index = 0;
 	data->max_index = 0;
+	data->size = 0;
 	return (data);
 }
 
