@@ -11,11 +11,19 @@ NAME	= push_swap
 
 all: $(NAME)
 
+bonus: $(BONUS)
+
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
+$(BONUS) :
+	cd bonus && make
+	mv checker ../
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)

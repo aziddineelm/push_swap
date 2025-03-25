@@ -13,12 +13,35 @@
 #include "get_next_line_bonus.h"
 #include "push_swap_bonus.h"
 
+static char	*ft_strjoin_gnl(char const *s1, char const *s2)
+{
+	char	*str;
+	size_t	len1;
+	size_t	len2;
+
+	len1 = 0;
+	if (s1)
+		len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	str = malloc(len1 + len2 + 1);
+	if (!str)
+		return (NULL);
+	if (s1)
+		ft_memcpy(str, s1, len1);
+	ft_memcpy(str + len1, s2, len2);
+	str[len1 + len2] = '\0';
+	return (str);
+}
+
 char	*ft_read(char *buffer, int fd)
 {
 	char	*tmp;
+	char	*new_buffer;
 	int		i;
 
-	tmp = (char *)malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		buffer = ft_strdup("");
+	tmp = malloc(BUFFER_SIZE + 1);
 	if (!tmp)
 		return (free(buffer), NULL);
 	i = 1;
@@ -28,9 +51,11 @@ char	*ft_read(char *buffer, int fd)
 		if (i < 0)
 			return (free(buffer), free(tmp), NULL);
 		tmp[i] = '\0';
-		buffer = ft_strjoin(buffer, tmp);
-		if (!buffer)
+		new_buffer = ft_strjoin_gnl(buffer, tmp);
+		free(buffer);
+		if (!new_buffer)
 			return (free(tmp), NULL);
+		buffer = new_buffer;
 	}
 	free(tmp);
 	return (buffer);

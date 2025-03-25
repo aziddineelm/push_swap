@@ -21,7 +21,6 @@ int	sb(t_stack **stack_b)
 	tmp = (*stack_b)->value;
 	(*stack_b)->value = (*stack_b)->next->value;
 	(*stack_b)->next->value = tmp;
-	write(1, "sb\n", 3);
 	return (0);
 }
 
@@ -34,7 +33,6 @@ int	pb(t_stack **stack_a, t_stack **stack_b)
 	tmp = *stack_a;
 	*stack_a = (*stack_a)->next;
 	ft_lstadd_front(stack_b, tmp);
-	write(1, "pb\n", 3);
 	return (0);
 }
 
@@ -50,7 +48,6 @@ int	rb(t_stack **stack_b)
 	tmp->next = NULL;
 	last = get_stack_last(*stack_b);
 	last->next = tmp;
-	write(1, "rb\n", 3);
 	return (0);
 }
 
@@ -67,6 +64,5 @@ int	rrb(t_stack **stack_b)
 	last = tmp->next;
 	tmp->next = NULL;
 	ft_lstadd_front(stack_b, last);
-	write(1, "rrb\n", 4);
 	return (0);
 }

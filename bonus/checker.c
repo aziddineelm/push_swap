@@ -6,7 +6,7 @@
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 21:48:37 by ael-mans          #+#    #+#             */
-/*   Updated: 2025/03/25 21:54:59 by ael-mans         ###   ########.fr       */
+/*   Updated: 2025/03/25 23:47:17 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	ft_strncmp(const char *s1, const char *s2, int n)
 
 int	cmp(char *line, t_data *a, t_data *b, char **args)
 {
-	(void)args;
 	if (!ft_strncmp("sa", line, 2) && (line[2] == '\n'))
 		sa(&a->stack);
 	else if (!ft_strncmp("sb", line, 2) && (line[2] == '\n'))
@@ -53,10 +52,7 @@ int	cmp(char *line, t_data *a, t_data *b, char **args)
 	else if (!ft_strncmp("rrr", line, 3) && (line[3] == '\n'))
 		rrr(&a->stack, &b->stack);
 	else
-	{
-		perror("error");
-		return (-1);
-	}
+		exit_error(a, b, args);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 17:18:37 by ael-mans          #+#    #+#             */
-/*   Updated: 2025/03/25 21:39:33 by ael-mans         ###   ########.fr       */
+/*   Updated: 2025/03/25 23:36:13 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	exit_error(t_data *a, t_data *b, char **args)
 {
 	write(2, "Error\n", 6);
 	clean_exit(a, b, args);
-	exit(0);
+	exit(1);
 }
 
 int	free_args(char **args)
