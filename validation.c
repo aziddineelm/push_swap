@@ -28,12 +28,14 @@ int	is_sorted(t_stack *stack)
 
 int	has_integer_overflow(char **args)
 {
-	int	i;
+	int			i;
+	long long	num;
 
 	i = 0;
 	while (args[i])
 	{
-		if (ft_atoi(args[i]) > 2147483647 || ft_atoi(args[i]) < -2147483648)
+		num = (long long)ft_atoi(args[i]);
+		if (num > INT_MAX || num < INT_MIN)
 			return (1);
 		i++;
 	}

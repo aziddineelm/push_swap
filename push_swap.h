@@ -38,7 +38,6 @@ int			sa(t_stack **stack_a);
 int			pa(t_stack **stack_a, t_stack **stack_b);
 int			ra(t_stack **stack_a);
 int			rra(t_stack **stack_a);
-
 int			sb(t_stack **stack_b);
 int			pb(t_stack **stack_a, t_stack **stack_b);
 int			rb(t_stack **stack_b);
@@ -57,8 +56,8 @@ char		*ft_strjoin(char const *s1, char const *s2);
 int			ft_atoi(const char *str);
 t_data		*init_stack_data(void);
 int			free_stack_data(t_data *data);
-void		ft_lstadd_front(t_stack **lst, t_stack *new);
-void		ft_lstadd_back(t_stack **lst, t_stack *new);
+void		ft_lstadd_front(t_stack **lst, t_stack *newer);
+void		ft_lstadd_back(t_stack **lst, t_stack *newer);
 t_stack		*ft_lstlast(t_stack *lst);
 int			ft_lstsize(t_stack *lst);
 int			get_value_index(t_stack *stack, int value);
