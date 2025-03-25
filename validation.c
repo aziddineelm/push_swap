@@ -12,32 +12,40 @@
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack *stack)
+static int	check_overflow(long value, int sign)
 {
-	t_stack	*current;
-
-	current = stack;
-	while (current && current->next)
-	{
-		if (current->value > current->next->value)
-			return (0);
-		current = current->next;
-	}
-	return (1);
+	if (sign > 0 && value > INT_MAX)
+		return (1);
+	if (sign < 0 && (-value) < INT_MIN)
+		return (1);
+	return (0);
 }
 
 int	has_integer_overflow(char **args)
 {
-	int			i;
-	long long	num;
+	int		i;
+	int		j;
+	long	value;
+	int		sign;
 
-	i = 0;
-	while (args[i])
+	i = -1;
+	while (args[++i])
 	{
-		num = (long long)ft_atoi(args[i]);
-		if (num > INT_MAX || num < INT_MIN)
-			return (1);
-		i++;
+		j = 0;
+		sign = 1;
+		value = 0;
+		if (args[i][j] == '-' || args[i][j] == '+')
+		{
+			if (args[i][j++] == '-')
+				sign = -1;
+		}
+		while (args[i][j] >= '0' && args[i][j] <= '9')
+		{
+			if (check_overflow(value * 10 + (args[i][j] - '0'), sign))
+				return (1);
+			value = value * 10 + (args[i][j] - '0');
+			j++;
+		}
 	}
 	return (0);
 }
