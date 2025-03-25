@@ -12,6 +12,13 @@
 
 #include "push_swap.h"
 
+void	exit_error(t_data *a, t_data *b, char **args)
+{
+	write(2, "Error\n", 6);
+	clean_exit(a, b, args);
+	exit(0);
+}
+
 int	free_args(char **args)
 {
 	int	i;

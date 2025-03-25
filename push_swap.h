@@ -75,5 +75,6 @@ void		push_max_to_a(t_stack **a, t_stack **b);
 int			determine_chunk_size(t_data *data);
 int			free_args(char **args);
 void		clean_exit(t_data *a, t_data *b, char **args);
+void		exit_error(t_data *a, t_data *b, char **args);
 
 #endif

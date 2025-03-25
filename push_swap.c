@@ -105,16 +105,11 @@ int	main(int argc, char **argv)
 		return (0);
 	args = parse_input_args(argv + 1);
 	if (args == NULL)
-	{
-		write(2, "Error\n", 6);
-		return (clean_exit(a, b, args), 1);
-	}
-	parse_args_to_stack(args, &a);
+		exit_error(a, b, args);
+	if (!parse_args_to_stack(args, &a))
+		exit_error(a, b, args);
 	if (!validate_input(a, args) || !is_valid_integer(args))
-	{
-		write(2, "Error\n", 6);
-		return (clean_exit(a, b, args), 1);
-	}
+		exit_error(a, b, args);
 	sort_stack(a, b);
 	clean_exit(a, b, args);
 	return (0);
