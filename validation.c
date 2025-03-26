@@ -12,12 +12,22 @@
 
 #include "push_swap.h"
 
-static int	check_overflow(long value, int sign)
+static int	check_overflow(long value, int *sign, int flag)
 {
-	if (sign > 0 && value > INT_MAX)
-		return (1);
-	if (sign < 0 && (-value) < INT_MIN)
-		return (1);
+	if (flag)
+	{
+		if (*sign > 0 && value > INT_MAX)
+			return (1);
+		if (*sign < 0 && (-value) < INT_MIN)
+			return (1);
+	}
+	else
+	{
+		if ((char)value == '-' || (char)value == '+')
+			return (1);
+		if ((char)value == '-')
+			*sign = -1;
+	}
 	return (0);
 }
 
@@ -36,15 +46,14 @@ int	has_integer_overflow(char **args)
 		value = 0;
 		if (args[i][j] == '-' || args[i][j] == '+')
 		{
-			if (args[i][j++] == '-')
-				sign = -1;
+			if (check_overflow((long) args[i][++j], &sign, 0))
+				return (1);
 		}
 		while (args[i][j] >= '0' && args[i][j] <= '9')
 		{
-			if (check_overflow(value * 10 + (args[i][j] - '0'), sign))
+			if (check_overflow(value * 10 + (args[i][j] - '0'), &sign, 1))
 				return (1);
-			value = value * 10 + (args[i][j] - '0');
-			j++;
+			value = value * 10 + (args[i][j++] - '0');
 		}
 	}
 	return (0);
@@ -61,7 +70,7 @@ int	is_valid_integer(char **args)
 		j = 0;
 		if (args[i][j] == '-' || args[i][j] == '+')
 			j++;
-		if (args[i][j] == '\0')
+		if (args[i][j] == '\0' || args[i][j] == '-' || args[i][j] == '+')
 			return (0);
 		while (args[i][j])
 		{

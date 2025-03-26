@@ -53,7 +53,7 @@ char		*ft_strdup(const char *s);
 int			ft_strlen(const char *s);
 char		**ft_split(char const *s, char c);
 char		*ft_strjoin(char const *s1, char const *s2);
-int			ft_atoi(const char *str);
+long		ft_atoi(const char *str);
 t_data		*init_stack_data(void);
 int			free_stack_data(t_data *data);
 void		ft_lstadd_front(t_stack **lst, t_stack *newer);

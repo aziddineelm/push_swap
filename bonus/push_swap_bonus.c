@@ -99,17 +99,19 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	a = init_stack_data();
-	b = init_stack_data();
-	if (!a || !b)
-		return (0);
 	args = parse_input_args(argv + 1);
 	if (args == NULL)
-		exit_error(a, b, args);
+		exit_error(NULL, NULL, args);
+	a = init_stack_data();
+	if (!a)
+		return (0);
 	if (!parse_args_to_stack(args, &a))
-		exit_error(a, b, args);
-	if (!validate_input(a, args) || !is_valid_integer(args))
-		exit_error(a, b, args);
+		exit_error(a, NULL, args);
+	if (!is_valid_integer(args) || !validate_input(a, args))
+		exit_error(a, NULL, args);
+	b = init_stack_data();
+	if (!b)
+		exit_error(a, NULL, args);
 	check(a, b, args);
 	clean_exit(a, b, args);
 	return (0);
