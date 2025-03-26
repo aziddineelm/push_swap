@@ -52,7 +52,7 @@ int	cmp(char *line, t_data *a, t_data *b, char **args)
 	else if (!ft_strncmp("rrr", line, 3) && (line[3] == '\n'))
 		rrr(&a->stack, &b->stack);
 	else
-		exit_error(a, b, args);
+		return (clean_exit(a, b, args), -1);
 	return (0);
 }
 
@@ -70,7 +70,6 @@ int	check(t_data *a, t_data *b, char **args)
 		i = cmp(line, a, b, args);
 		if (i == -1)
 		{
-			clean_exit(a, b, args);
 			free(line);
 			exit(1);
 		}

@@ -114,6 +114,8 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
+	if (fd == -1)
+		return (free(buffer), NULL);
 	if (fd < 0 || BUFFER_SIZE < 0 || BUFFER_SIZE > 2147483647)
 		return (NULL);
 	buffer = ft_read(buffer, fd);
