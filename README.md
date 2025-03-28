@@ -31,21 +31,42 @@ The program implements a sorting algorithm using two stacks and a set of operati
 ## 📂 **Repository Structure**  
 ```
 .
-├── push_swap.c        
-├── sorting.c          
-├── larg_sort.c        
-├── operations_a.c     
-├── operations_b.c     
-├── stack_utils.c      
-├── array_utils.c      
-├── list_utils.c       
-├── string_utils.c     
-├── ft_split.c         
-├── memory.c           
-├── validation.c       
-├── push_swap.h        
-├── Makefile           
-└── bonus/   
+┌─────── Mandatory/
+│   ├── push_swap.c
+│   ├── sorting.c
+│   ├── larg_sort.c
+│   ├── operations_a.c
+│   ├── operations_b.c
+│   ├── stack_utils.c
+│   ├── array_utils.c
+│   ├── list_utils.c
+│   ├── string_utils.c
+│   ├── ft_split.c
+│   ├── memory.c
+│   ├── validation.c
+│   ├── push_swap.h
+│
+├── bonus
+│   ├── push_swap_bonus.c
+│   ├── sorting_bonus.c
+│   ├── larg_sort_bonus.c
+│   ├── operations_a_bonus.c
+│   ├── operations_b_bonus.c
+│   ├── operations_bonus.c
+│   ├── stack_utils_bonus.c
+│   ├── array_utils_bonus.c
+│   ├── list_utils_bonus.c
+│   ├── string_utils_bonus.c
+│   ├── ft_split_bonus.c
+│   ├── memory_bonus.c
+│   ├── validation_bonus.c
+│   ├── checker.c
+│   ├── push_swap_bonus.h
+│   ├── get_next_line_bonus.c
+│   ├── get_next_line_bonus.h
+│   ├── get_next_line_utils_bonus.c
+│
+└── Makefile
 ```
 
 ## 📜 **Allowed Operations**  
