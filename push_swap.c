@@ -74,8 +74,8 @@ char	**parse_input_args(char **argv)
 	if (!argv[0] || !argv[i][0])
 		return (NULL);
 	str = ft_strdup(argv[i]);
-	if (!str)
-		return (NULL);
+	if (!str || str[i] == ' ')
+		return (free(str), NULL);
 	i++;
 	while (argv[i])
 	{
